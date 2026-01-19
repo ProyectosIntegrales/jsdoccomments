@@ -1,0 +1,40 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "npm: watch",
+            "type": "npm",
+            "script": "watch",
+            "isBackground": true,
+            "problemMatcher": "$esbuild-watch",
+            "presentation": {
+                "reveal": "never"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ],
+    "problemMatchers": [
+        {
+            "name": "esbuild-watch",
+            "owner": "typescript",
+            "background": {
+                "activeOnStart": true,
+                "beginsPattern": ".*(watch|Watching).*",
+                "endsPattern": ".*(rebuilt|build succeeded|built in|watching for file changes).*"
+            },
+            "pattern": [
+                {
+                    "regexp": "^([^:\\s]+\\.(?:ts|tsx|js|jsx)):(\\d+):(\\d+):\\s+(error|warning):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            ]
+        }
+    ]
+}
