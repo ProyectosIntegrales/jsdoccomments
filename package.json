@@ -2,14 +2,27 @@
   "name": "jsdoccomments",
   "displayName": "JSDocComments",
   "description": "Add JSDocs and inline comments to the selected code",
-  "version": "0.0.1",
-  "publisher": "Gabriel Estrada",
-  "main": "./dist/extension.js",
-  "license": "MIT",
+  "version": "0.1.0",
+  "author": "Proyectos Integrales",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/ProyectosIntegrales/jsdoccomments.git"
   },
+  "homepage": "https://github.com/ProyectosIntegrales/jsdoccomments",
+  "bugs": {
+    "url": "https://github.com/ProyectosIntegrales/jsdoccomments/issues"
+  },
+  "keywords": [
+    "jsdoc",
+    "typescript",
+    "javascript",
+    "copilot",
+    "documentation",
+    "vscode-extension"
+  ],
+  "icon": "images/icon.png",
+  "main": "./dist/extension.js",
+  "license": "MIT",
   "engines": {
     "vscode": "^1.108.1"
   },
@@ -24,11 +37,11 @@
     "commands": [
       {
         "command": "jsdoccomments.runJsdocOnSelection",
-        "title": "Copilot: Apply JSDoc (/jsdoc) for Selection/Enclosing Symbol"
+        "title": "JSDocComments: Apply JSDoc (/jsdoc) for Selection/Enclosing Symbol"
       },
       {
         "command": "jsdoccomments.generateJsdocForSelection",
-        "title": "Copilot: Generate JSDoc Text Only (/jsdoc_text)"
+        "title": "JSDocComments: Generate JSDoc Text Only (/jsdoc_text)"
       }
     ],
     "menus": {

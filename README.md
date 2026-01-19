@@ -1,71 +1,52 @@
-# jsdoccomments README
+# JSDocComments
 
-This is the README for your extension "jsdoccomments". After writing up a brief description, we recommend including the following sections.
+Adds two commands to generate JSDoc for the selected code (or the enclosing function/method if nothing is selected) using GitHub Copilot Chat prompt files.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- **Apply JSDoc (/jsdoc)**: Opens Copilot Chat with `/jsdoc` and the selected code (or enclosing symbol) to apply JSDoc in-place.
+- **Generate JSDoc Text Only (/jsdoc_text)**: Opens Copilot Chat with `/jsdoc_text` and the selected code to generate only the JSDoc block (no edits).
 
-For example if there is an image subfolder under your extension project workspace:
+## Usage
 
-\!\[feature X\]\(images/feature-x.png\)
+### Context menu
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+In TypeScript/JavaScript editors:
+
+1. Select a function/method (optional).
+2. Right-click in the editor.
+3. Choose:
+   - **JSDocComments: Apply JSDoc (/jsdoc) for Selection/Enclosing Symbol**, or
+   - **JSDocComments: Generate JSDoc Text Only (/jsdoc_text)**
+
+### Keyboard shortcuts
+
+- Apply JSDoc: `Ctrl+Alt+J`
+- Generate text only: `Ctrl+Alt+Shift+J`
+
+> Note: If these shortcuts conflict with your environment, rebind them in VS Code Keyboard Shortcuts.
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- VS Code / VS Code Insiders
+- GitHub Copilot and GitHub Copilot Chat extensions installed and signed in
+- Prompt files available in the workspace:
+  - `.github/prompts/jsdoc.prompt.md` (invoked as `/jsdoc`)
+  - `.github/prompts/jsdoc_text.prompt.md` (invoked as `/jsdoc_text`)
 
-## Extension Settings
+## How it works
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+This extension reads the current selection (or expands to the smallest enclosing function/method symbol), then opens the VS Code Chat view with the appropriate slash command and the code snippet.
 
-For example:
+If the environment does not support pre-filling chat input programmatically, the extension copies the prompt to the clipboard and opens chat.
 
-This extension contributes the following settings:
+## Known limitations
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+- Copilot may prompt to allow edits depending on workspace trust and file sensitivity.
+- Auto-expansion relies on VS Code’s document symbol provider for the current language.
 
-## Known Issues
+## Release notes
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+### 0.0.1
 
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+- Initial release with context menu items and keyboard shortcuts for JSDoc generation.
