@@ -1,8 +1,9 @@
 {
   "name": "jsdoccomments",
   "displayName": "JSDocComments",
+  "publisher": "ProyectosIntegrales",
   "description": "Add JSDocs and inline comments to the selected code",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Proyectos Integrales",
   "repository": {
     "type": "git",
@@ -31,7 +32,11 @@
   ],
   "activationEvents": [
     "onCommand:jsdoccomments.runJsdocOnSelection",
-    "onCommand:jsdoccomments.generateJsdocForSelection"
+    "onCommand:jsdoccomments.generateJsdocForSelection",
+    "onCommand:jsdoccomments.codexApplyCsDoc",
+    "onCommand:jsdoccomments.codexApplyJsDoc",
+    "onCommand:jsdoccomments.runCsDocOnSelection",
+    "onCommand:jsdoccomments.generateCsDocForSelection"
   ],
   "contributes": {
     "commands": [
@@ -42,6 +47,22 @@
       {
         "command": "jsdoccomments.generateJsdocForSelection",
         "title": "JSDocComments: Generate JSDoc Text Only (/jsdoc_text)"
+      },
+      {
+        "command": "jsdoccomments.runCsDocOnSelection",
+        "title": "Copilot: Apply C# XML Docs (/csdoc) for Selection/Enclosing Symbol"
+      },
+      {
+        "command": "jsdoccomments.generateCsDocForSelection",
+        "title": "Copilot: Generate C# XML Docs Text Only (/csdoc_text)"
+      },
+      {
+        "command": "jsdoccomments.codexApplyCsDoc",
+        "title": "Codex: Apply C# XML Docs (CLI)"
+      },
+      {
+        "command": "jsdoccomments.codexApplyJsDoc",
+        "title": "Codex: Apply JSDoc (CLI)"
       }
     ],
     "menus": {
@@ -55,6 +76,26 @@
           "command": "jsdoccomments.generateJsdocForSelection",
           "when": "editorTextFocus && (resourceLangId == typescript || resourceLangId == javascript || resourceLangId == typescriptreact || resourceLangId == javascriptreact)",
           "group": "navigation@1001"
+        },
+        {
+          "command": "jsdoccomments.codexApplyCsDoc",
+          "when": "editorTextFocus && resourceLangId == csharp",
+          "group": "navigation@1100"
+        },
+        {
+          "command": "jsdoccomments.codexApplyJsDoc",
+          "when": "editorTextFocus && (resourceLangId == typescript || resourceLangId == javascript || resourceLangId == typescriptreact || resourceLangId == javascriptreact)",
+          "group": "navigation@1101"
+        },
+        {
+          "command": "jsdoccomments.runCsDocOnSelection",
+          "when": "editorTextFocus && resourceLangId == csharp",
+          "group": "navigation@1002"
+        },
+        {
+          "command": "jsdoccomments.generateCsDocForSelection",
+          "when": "editorTextFocus && resourceLangId == csharp",
+          "group": "navigation@1003"
         }
       ]
     },
@@ -68,6 +109,26 @@
         "command": "jsdoccomments.generateJsdocForSelection",
         "key": "ctrl+alt+shift+j",
         "when": "editorTextFocus && (resourceLangId == typescript || resourceLangId == javascript || resourceLangId == typescriptreact || resourceLangId == javascriptreact)"
+      },
+      {
+        "command": "jsdoccomments.codexApplyCsDoc",
+        "key": "ctrl+alt+.",
+        "when": "editorTextFocus && resourceLangId == csharp"
+      },
+      {
+        "command": "jsdoccomments.codexApplyJsDoc",
+        "key": "ctrl+alt+/",
+        "when": "editorTextFocus && (resourceLangId == typescript || resourceLangId == javascript || resourceLangId == typescriptreact || resourceLangId == javascriptreact)"
+      },
+      {
+        "command": "jsdoccomments.runCsDocOnSelection",
+        "key": "ctrl+alt+;",
+        "when": "editorTextFocus && resourceLangId == csharp"
+      },
+      {
+        "command": "jsdoccomments.generateCsDocForSelection",
+        "key": "ctrl+alt+shift+;",
+        "when": "editorTextFocus && resourceLangId == csharp"
       }
     ]
   },
